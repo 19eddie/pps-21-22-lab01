@@ -10,31 +10,31 @@ public abstract class AbstractBankAccount implements BankAccount {
     }
 
     @Override
-    public AccountHolder getHolder() {
+    public final AccountHolder getHolder() {
         return this.holder;
     }
 
     @Override
-    public double getBalance() {
+    public final double getBalance() {
         return this.balance;
     }
 
     @Override
-    public void deposit(final int userID, final double amount) {
+    public final void deposit(final int userID, final double amount) {
         if (checkUser(userID) && isDepositAllowed(amount)) {
             this.balance += amount - getFee();
         }
     }
 
-    private boolean isDepositAllowed(final double amount) {
-        return getFee() <= amount;
-    }
-
     @Override
-    public void withdraw(final int userID, final double amount) {
+    public final void withdraw(final int userID, final double amount) {
         if (checkUser(userID) && isWithdrawAllowed(amount)) {
             this.balance -= amount + getFee();
         }
+    }
+
+    private boolean isDepositAllowed(final double amount) {
+        return getFee() <= amount;
     }
 
     private boolean isWithdrawAllowed(final double amount) {
