@@ -21,11 +21,6 @@ public class CircularListTest {
     }
 
     @Test
-    public void testIsEmpty(){
-        assertTrue(circularList.isEmpty());
-    }
-
-    @Test
     public void testAdd(){
         circularList.add(1);
         assertEquals(Optional.of(1), circularList.next());
@@ -36,6 +31,20 @@ public class CircularListTest {
         circularList.add(0);
         circularList.add(1);
         assertEquals(2,circularList.size());
+    }
+
+    @Test
+    public void testIsEmpty(){
+        assertTrue(circularList.isEmpty());
+    }
+
+    @Test
+    public void testNext(){
+        circularList.add(1);
+        circularList.add(2);
+        assertEquals(Optional.of(1),circularList.next());
+        assertEquals(Optional.of(2),circularList.next());
+        assertEquals(Optional.of(1),circularList.next());
     }
 
 }
