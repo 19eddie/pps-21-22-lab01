@@ -31,4 +31,11 @@ public class CircularListTest {
         assertEquals(Optional.of(1), circularList.next());
     }
 
+    @Test
+    public void testSize(){
+        circularList.add(0);
+        circularList.add(1);
+        assertEquals(2,circularList.size());
+    }
+
 }

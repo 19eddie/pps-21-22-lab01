@@ -20,7 +20,7 @@ public class SimpleCircularList implements CircularList{
 
     @Override
     public int size() {
-        return 0;
+        return this.list.size();
     }
 
     @Override
