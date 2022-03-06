@@ -6,14 +6,16 @@ import java.util.Optional;
 public class SimpleCircularList implements CircularList{
 
     private final LinkedList<Integer> list;
+    private int actualIndex;
 
     public SimpleCircularList() {
         this.list = new LinkedList<>();
+        this.actualIndex=0;
     }
 
     @Override
     public void add(int element) {
-
+        this.list.add(element);
     }
 
     @Override
@@ -28,7 +30,12 @@ public class SimpleCircularList implements CircularList{
 
     @Override
     public Optional<Integer> next() {
-        return Optional.empty();
+        int indexToReturn = this.actualIndex;
+        actualIndex++;
+        if(actualIndex>=this.list.size()){
+            actualIndex=0;
+        }
+        return Optional.of(list.get(indexToReturn));
     }
 
     @Override
