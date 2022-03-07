@@ -1,5 +1,5 @@
 import lab01.tdd.CircularList;
-import lab01.tdd.SimpleCircularList;
+import lab01.tdd.CircularListImpl;
 import org.junit.jupiter.api.*;
 
 import java.util.Optional;
@@ -17,7 +17,7 @@ public class CircularListTest {
 
     @BeforeEach
     public void beforeEach(){
-        circularList = new SimpleCircularList();
+        circularList = new CircularListImpl();
     }
 
     @Test
@@ -48,10 +48,27 @@ public class CircularListTest {
     }
 
     @Test
+    public void testNextEmptyList(){
+        assertEquals(Optional.empty(), circularList.next());
+    }
+
+    @Test
     public void testPrevious(){
         circularList.add(1);
         circularList.add(2);
         assertEquals(Optional.of(2),circularList.previous());
+    }
+
+    @Test
+    public void testPreviousEmptyList(){
+        assertEquals(Optional.empty(), circularList.previous());
+    }
+
+    @Test
+    public void testReset(){
+        circularList.add(1);
+        circularList.reset();
+        this.testIsEmpty();
     }
 
 }
